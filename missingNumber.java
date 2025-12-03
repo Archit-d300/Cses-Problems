@@ -1,17 +1,15 @@
-import java.util.*;
+import java.util.Scanner;
+
 class missingNumber {
-        public static void main(String[] args) {
+    public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
         int n = s.nextInt();
-        HashSet<Integer> set = new HashSet<>();
-        for (int i = 0; i < n - 1; i++) {
-            set.add(s.nextInt());
+        long sum = 0;
+        long a = (long) (n * (n + 1)) / 2;
+        for (int i = 1; i < n; i++) {
+            sum += (long) s.nextInt();
         }
-        for (int j = 1; j <= n; j++) {
-            if (!set.contains(j)) {
-                System.out.println(j);
-                break;
-            }
-        }
+        System.out.println(a - sum);
+        s.close();
     }
 }
