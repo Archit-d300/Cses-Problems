@@ -1,15 +1,27 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
+import java.util.StringTokenizer;
 
-class missingNumber {
-    public static void main(String[] args) {
-        Scanner s = new Scanner(System.in);
-        int n = s.nextInt();
-        long sum = 0;
-        long a = (long) (n * (n + 1)) / 2;
-        for (int i = 1; i < n; i++) {
-            sum += (long) s.nextInt();
+public class missingNumber {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st;
+
+        st = new StringTokenizer(br.readLine());
+        int n = Integer.parseInt(st.nextToken());
+
+        int xorAll = 0;
+        for (int i = 1; i <= n; i++) {
+            xorAll ^= i;
         }
-        System.out.println(a - sum);
-        s.close();
+
+        int xorInput = 0;
+        st = new StringTokenizer(br.readLine());
+        for (int i = 0; i < n - 1; i++) {
+            xorInput ^= Integer.parseInt(st.nextToken());
+        }
+
+        System.out.println(xorAll ^ xorInput);
     }
 }
